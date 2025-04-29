@@ -2,7 +2,7 @@
     <div class="mx-auto w-25 counter container d-flex justify-content-center flex-column">
         <h2>Counter: </h2>
         <p class=" my-2 border border-primary">
-            {{ counter }}
+            {{ counterStore.counterValue }} <br>
             <span> == Even</span>
             <span> != Oneven</span>
         </p>
@@ -12,19 +12,20 @@
 </template>
 
 <script>
+import { useCounterStore } from "@/stores/counter";
+import { mapStores } from "pinia";
+
 export default {
-    data() {
-        return {
-            counter: 0 
-        }
-    },
     methods: {
         increment() {
-            this.counter++; 
+            this.counterStore.increaseValue();
         },
         decrement() {
-            this.counter--; 
-        }
-    },   
+            this.counterStore.decreaseValue();
+        },
+    },
+    computed: {
+        ...mapStores(useCounterStore), // => counterStore aangemaakt
+    },
 }
 </script>
