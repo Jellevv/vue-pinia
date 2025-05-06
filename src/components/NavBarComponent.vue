@@ -6,7 +6,8 @@
         <span class="ms-3 text-primary">Pinia State Management</span>
       </RouterLink>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -19,7 +20,12 @@
             <RouterLink class="nav-link border border-primary rounded mx-2" to="/bs">Bootstrap</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link border border-primary rounded mx-2" to="/counter">Counter <span class="badge bg-primary text-secondary">*</span></RouterLink>
+            <RouterLink class="nav-link border border-primary rounded mx-2" to="/counter">Counter <span
+                class="badge bg-primary text-secondary">{{ counterStore.counterValue }}</span></RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link border border-primary rounded mx-2" to="/TaskStore">Tasks <span
+              class="badge bg-primary text-secondary">{{ TaskStore.isNotDoneCount }}</span></RouterLink>
           </li>
         </ul>
       </div>
@@ -27,10 +33,17 @@
   </nav>
 </template>
 <script>
+import { useCounterStore } from "@/stores/counter";
+import { useTaskStore } from "@/stores/TaskStore";
+import { mapStores } from "pinia";
+
 export default {
-    
+  computed: {
+    ...mapStores(useCounterStore), // => counterStore aangemaakt
+    ...mapStores(useTaskStore), // => TaskStore aangemaakt
+  },
 }
 </script>
 <style lang="">
-    
+
 </style>

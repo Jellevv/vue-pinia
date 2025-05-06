@@ -3,8 +3,8 @@
         <h2>Counter: </h2>
         <p class=" my-2 border border-primary">
             {{ counterStore.counterValue }} <br>
-            <span> == Even</span>
-            <span> != Oneven</span>
+            <span v-if="counterStore.isEven"> = Even</span>
+            <span v-else> = Oneven</span>
         </p>
         <button class="btn btn-primary my-2 text-light" @click="increment()">+ 1</button>
         <button class="btn btn-primary my-2 text-light" @click="decrement()">- 1</button>

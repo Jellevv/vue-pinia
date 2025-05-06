@@ -21,7 +21,13 @@ const router = createRouter({
       name: 'counter',
       //component: CounterView
       component: () => import('@/views/CounterView.vue') //lazy loading: only load when needed
-    }
+    },
+    {
+      path: '/TaskStore',
+      name: 'task',
+      //component: CounterView
+      component: () => import('@/views/TaskView.vue') //lazy loading: only load when needed
+    },
   ]
 })
 
